@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-02-06T02:11:44Z" name="Default suite" finished-at="2023-02-06T02:11:53Z" duration-ms="9370">
+    <groups>
+    </groups>
+    <test started-at="2023-02-06T02:11:44Z" name="Default test" finished-at="2023-02-06T02:11:53Z" duration-ms="9370">
+      <class name="com.supermarket.tests.ManageUsersTest">
+        <test-method is-config="true" signature="setUpBrowser()[pri:0, instance:com.supermarket.tests.ManageUsersTest@7e4204e2]" started-at="2023-02-06T02:11:44Z" name="setUpBrowser" finished-at="2023-02-06T02:11:50Z" duration-ms="5722" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpBrowser -->
+        <test-method signature="verify_ListUsersActivation()[pri:0, instance:com.supermarket.tests.ManageUsersTest@7e4204e2]" started-at="2023-02-06T02:11:50Z" name="verify_ListUsersActivation" finished-at="2023-02-06T02:11:53Z" duration-ms="3594" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_ListUsersActivation -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.supermarket.tests.ManageUsersTest@7e4204e2]" started-at="2023-02-06T02:11:53Z" name="tearDown" finished-at="2023-02-06T02:11:53Z" duration-ms="6" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verify_ListUsersActivation status=SUCCESS method=ManageUsersTest.verify_ListUsersActivation()[pri:0, instance:com.supermarket.tests.ManageUsersTest@7e4204e2] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.supermarket.tests.ManageUsersTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
