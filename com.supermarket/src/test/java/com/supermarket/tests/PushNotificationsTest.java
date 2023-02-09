@@ -19,6 +19,7 @@ public class PushNotificationsTest extends Base {
 		pushnotificationpage=new PushNotificationsPage (driver);
 		loginpage.login();
 		pushnotificationpage.click_OnPushNotification();
+		System.out.println("working test case");
 		Assert.assertTrue(pushnotificationpage.send_Information("Delivery","At 4 pm"));
 	}
 	
