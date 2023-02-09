@@ -7,8 +7,10 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.supermarket.constants.Constants;
 import com.supermarket.utilities.GeneralUtilities;
@@ -35,6 +37,14 @@ public class LoginPage
 	private WebElement signin;
 	@FindBy(xpath="//a[@class='d-block']")
 	private WebElement admin;
+	@FindBy(xpath="//a[@data-toggle='dropdown']")
+	private WebElement adminDropDown;
+	@FindBy(xpath="(//a[@class='dropdown-item'])[2]")
+	private WebElement logOut;
+	@FindBy(xpath="//p[@class='login-box-msg']")
+	private WebElement signInAlert;
+	
+	
 	
 	
 	
@@ -117,6 +127,14 @@ public class LoginPage
 		return generalutilities.get_TextOfElements("//div[@class='inner']//p");
 		
 		 
+	 }
+	 public String is_UserLoggedOut()
+	 {
+		 generalutilities=new GeneralUtilities(driver);
+		 adminDropDown.click();
+		 Actions action=new Actions(driver);
+		 action.moveToElement(logOut).click().build().perform();
+		 return generalutilities.get_TextOfElement(signInAlert);
 	 }
 	
 	 

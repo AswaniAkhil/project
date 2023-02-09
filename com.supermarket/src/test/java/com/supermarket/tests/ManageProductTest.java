@@ -20,7 +20,7 @@ public void verify_ImageOfProduct()
 	 manageproductpage.click_OnManageProduct();
 	 Assert.assertTrue(manageproductpage.is_ImagePresent());
 }
-@Test
+@Test(groups = "sanity")
 public void verify_AProductIsDeleted()
 { 
 	manageproductpage=new ManageProductPage(driver);

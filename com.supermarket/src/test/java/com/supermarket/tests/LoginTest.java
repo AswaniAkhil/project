@@ -14,7 +14,7 @@ import com.supermarket.utilities.ExcelRead;
 public class LoginTest extends Base {
 	LoginPage loginpage;
 	ExcelRead excelread;
-	@Test
+	@Test(groups = "smoke")
 	public void verifyLogin()
 	{
 		excelread=new ExcelRead();
@@ -24,7 +24,7 @@ public class LoginTest extends Base {
 		loginpage=new LoginPage(driver);
 		loginpage.login();
 	}
-	@Test
+	@Test(groups ="smoke" )
 	public void verify_InvalidCredentialsErrorMessage()
 	{
 		loginpage=new LoginPage(driver);
@@ -56,7 +56,7 @@ public class LoginTest extends Base {
 		Assert.assertTrue(loginpage.clickOnRememeberMe());
 		
 	}
-	@Test
+	@Test(groups = "smoke")
 	public void verify_TextOfSignInButton()
 	{
 		loginpage=new LoginPage(driver);
@@ -85,8 +85,16 @@ public class LoginTest extends Base {
 		System.out.println(actualDashboardCatagories);
 		System.out.println(actualDashboardCatagories.size());
 		Assert.assertEquals(actualDashboardCatagories.size(), 18);
+	}
+	@Test
+	public void verify_LoggedOutAlert()
+	{
+		loginpage=new LoginPage(driver);
+		loginpage.login();
 		
-		
+		String expectedText="Sign in to start your session";
+		String actualText=loginpage.is_UserLoggedOut();
+		Assert.assertEquals(actualText, expectedText,"Wrong text");
 	}
 	
 	

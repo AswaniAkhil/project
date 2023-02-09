@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import com.supermarket.constants.Constants;
+
 public class PageUtility {
 	WebDriver driver;
 	public PageUtility(WebDriver driver)
@@ -106,6 +108,10 @@ public class PageUtility {
 		driver.switchTo().alert().dismiss();
 	}
 	
-	
+	public void upload_File(WebElement element,String fileName)
+	{
+		String path=Constants.IMAGES_FILE_PATH+fileName+".jfif";
+		element.sendKeys(path);
+	}
 
 }

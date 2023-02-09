@@ -15,11 +15,16 @@ public class GeneralUtilities {
 	{
 		this.driver=driver;
 	}
+	public GeneralUtilities()
+	{
+		
+	}
 	public String get_TextOfElement(WebElement element)
 	{
 		
 		return element.getText();
 	}
+	
 	public String get_AttributeOfElement(WebElement element,String attribute)
 	{
 		return element.getAttribute(attribute);

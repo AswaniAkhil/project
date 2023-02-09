@@ -7,5 +7,10 @@ public class Constants {
  /**loginPage**/
  public static final String expectedErrorMessage="Alert!";
  /** dashboardPage**/
+ public static final String IMAGES_FILE_PATH=System.getProperty("user.dir")+"\\src\\main\\resources\\Images\\";
+ public static final String BURGER_FILE_PATH=System.getProperty("user.dir")+"\\src\\main\\resources\\Images\\"+"burger.jfif";
+ public static final String PIZZA_FILE_PATH=System.getProperty("user.dir")+"\\src\\main\\resources\\Images\\"+"pizza.jfif";
+ 
+ 
  
 }
