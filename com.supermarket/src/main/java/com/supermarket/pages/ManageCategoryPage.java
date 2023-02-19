@@ -22,6 +22,14 @@ public class ManageCategoryPage {
 	WebElement newButton;
 	@FindBy(xpath="(//label[@class='radio-inline']//following-sibling::input[@value='no'])[1]")
 	WebElement topMenuNoButton ;
+	@FindBy(xpath="//input[@id='category']")
+	WebElement enterCategory ;
+	@FindBy(xpath="//input[@id='main_img']")
+	WebElement chooseFile ;
+	@FindBy(xpath="//button[@class='btn btn-danger']")
+	WebElement save ;
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
+	WebElement  newCategoryAlert;
 	
 	public ManageCategoryPage(WebDriver driver)
 	{
@@ -39,6 +47,20 @@ public class ManageCategoryPage {
 		newButton.click();
 		topMenuNoButton.click();
 		return generalutilities.is_Enabled(topMenuNoButton);
+		
+	}
+	public boolean create_NewCategory(String category,String imageName)
+	{
+		manageCategory.click();
+		pageutility=new PageUtility(driver);
+		generalutilities=new GeneralUtilities(driver);
+		categoryMoreInfo.click();
+		newButton.click();
+		enterCategory.sendKeys(category);
+		pageutility.upload_File(chooseFile,imageName);
+		pageutility.scrollAndClick(save);
+		return generalutilities.is_Displayed(newCategoryAlert);
+		
 		
 	}
 	

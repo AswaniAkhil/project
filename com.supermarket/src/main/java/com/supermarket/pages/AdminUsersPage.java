@@ -19,60 +19,100 @@ public class AdminUsersPage {
 	PageUtility pageutility;
 	WaitUtility waitutility;
 	GeneralUtilities generalutilities;
-	@FindBy(xpath="(//a[@class='small-box-footer'])[2]")
+	@FindBy(xpath = "(//a[@class='small-box-footer'])[2]")
 	private WebElement adminUsersMoreInfo;
-	@FindBy(xpath="//input[@id='username']")
-	private WebElement userName;
-	@FindBy(xpath="//input[@id='password']")
-	private WebElement password;
-	@FindBy(xpath="//select[@id='user_type']")
+	@FindBy(xpath = "//input[@id='username']")
+	private WebElement updateUserName;
+	@FindBy(xpath = "//input[@id='password']")
+	private WebElement updatePassword;
+	@FindBy(xpath = "//select[@id='user_type']")
 	private WebElement userType;
-	@FindBy(xpath="//button[@name='Update']")
+	@FindBy(xpath = "//button[@name='Update']")
 	private WebElement updateButton;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	private WebElement alert;
-	
-	public AdminUsersPage(WebDriver driver)
-	{
-		this.driver=driver;
-		PageFactory.initElements(driver,this);
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
+	WebElement newButton;
+	@FindBy(xpath = "//input[@id='username']")
+	WebElement newUserName;
+	@FindBy(xpath = "//input[@id='password']")
+	WebElement newPassword;
+	@FindBy(xpath = "//select[@id='user_type']")
+	WebElement newUserType;
+	@FindBy(xpath = "(//button[@class='btn btn-block-sm btn-danger'])[2]")
+	WebElement save;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement newUserAlert;
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary']")
+	WebElement searchUser;
+	@FindBy(xpath = "//input[@id='un']")
+	WebElement searchUserName;
+	@FindBy(xpath = "//select[@id='ut']")
+	WebElement searchUserType;
+	@FindBy(xpath = "(//button[@class='btn btn-block-sm btn-danger'])[1]")
+	WebElement searchButton;
+	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr[1]//td[1]")
+	WebElement searchResult;
+
+	public AdminUsersPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
-	
-	
-	
-	
-	 public boolean update_UserDetails(String name,String u,String p)
-	 {
-		 int i;
-		 adminUsersMoreInfo.click();
-		 generalutilities=new GeneralUtilities(driver);
-		 pageutility=new PageUtility(driver);
-		 
- List<String>adminUsers=new ArrayList<String>();
-		 
-		 adminUsers=generalutilities.get_TextOfElements("//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]");
-		 for(i=0;i<adminUsers.size();i++)
-		 {
-			 if(name.equals(adminUsers.get(i)))
-			 {
-				 i++;
-				 break;
-			 }
-		 }
-		 WebElement editButton=driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']//tbody//tr["+i+"]//td[5]//a[2]"));
-		 pageutility.scrollAndClick(editButton);
-		 
-		 userName.sendKeys(u);
-		 password.sendKeys(p);
-		 Select select=new Select(userType);
-		 select.selectByIndex(3);
-		 updateButton.click();
-		 waitutility=new WaitUtility(driver);
-		 waitutility.wait_ForElementToBeVisible("//div[@class='alert alert-success alert-dismissible']");
-		 return generalutilities.is_Displayed(alert);
-		 
-		 
-	 }
-	
+
+	public boolean update_UserDetails(String name, String u, String p) {
+		int i;
+		adminUsersMoreInfo.click();
+		generalutilities = new GeneralUtilities(driver);
+		pageutility = new PageUtility(driver);
+
+		List<String> adminUsers = new ArrayList<String>();
+
+		adminUsers = generalutilities.get_TextOfElements("//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]");
+		for (i = 0; i < adminUsers.size(); i++) {
+			if (name.equals(adminUsers.get(i))) {
+				i++;
+				break;
+			}}
+		
+		WebElement editButton = driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']//tbody//tr[" + i + "]//td[5]//a[2]"));
+		pageutility.scrollAndClick(editButton);
+		
+		updateUserName.sendKeys(u);
+		updatePassword.sendKeys(p);
+		Select select = new Select(userType);
+		select.selectByIndex(3);
+		updateButton.click();
+		waitutility = new WaitUtility(driver);
+		waitutility.wait_ForElementToBeVisible("//div[@class='alert alert-success alert-dismissible']");
+		return generalutilities.is_Displayed(alert);
+
+	}
+
+	public boolean create_NewUser(String userName, String password, String userType) {
+		generalutilities = new GeneralUtilities(driver);
+		adminUsersMoreInfo.click();
+		Select select = new Select(newUserType);
+		newButton.click();
+		newUserName.sendKeys(userName);
+		newPassword.sendKeys(password);
+		select.selectByValue(userType);
+		save.click();
+		return generalutilities.is_Displayed(newUserAlert);
+
+	}
+
+	public String search_ForAUser(String userName, String UserType) {
+		generalutilities = new GeneralUtilities(driver);
+		waitutility = new WaitUtility(driver);
+		adminUsersMoreInfo.click();
+		searchUser.click();
+		searchUserName.sendKeys(userName);
+		Select select = new Select(searchUserType);
+		select.selectByValue(UserType);
+		searchButton.click();
+
+		return generalutilities.get_TextOfElement(searchResult);
+
+	}
 
 }

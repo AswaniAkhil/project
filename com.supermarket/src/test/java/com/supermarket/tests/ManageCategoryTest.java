@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import com.supermarket.base.Base;
 import com.supermarket.pages.LoginPage;
 import com.supermarket.pages.ManageCategoryPage;
+import com.supermarket.utilities.GeneralUtilities;
 
 public class ManageCategoryTest extends Base {
 	ManageCategoryPage managecategorypage;
@@ -17,6 +18,15 @@ public class ManageCategoryTest extends Base {
 		loginpage.login();
 		managecategorypage=new ManageCategoryPage(driver);
 		Assert.assertTrue(managecategorypage.enable_NoButton()," disabled");
+	}
+	@Test
+	public void verify_NewCategoryCreated()
+	{
+		String category = "fancy and gifts" + GeneralUtilities.getTimeStamp();
+		loginpage=new LoginPage(driver);
+		loginpage.login();
+		managecategorypage=new ManageCategoryPage(driver);
+		Assert.assertTrue(managecategorypage.create_NewCategory(category,"fancy"));
 	}
 
 }

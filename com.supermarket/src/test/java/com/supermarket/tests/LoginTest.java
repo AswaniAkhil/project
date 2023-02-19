@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import com.supermarket.base.Base;
 import com.supermarket.constants.Constants;
+import com.supermarket.constants.DataProviders;
 import com.supermarket.pages.LoginPage;
 import com.supermarket.utilities.ExcelRead;
 
@@ -33,7 +34,15 @@ public class LoginTest extends Base {
 		String expectedErrorMessage=Constants.expectedErrorMessage;
 		String actualErrorMessage=loginpage.get_ErrorMessage();
 		Assert.assertEquals(actualErrorMessage, expectedErrorMessage,"error message is not displayed");
+	}
+	@Test(dataProvider="invalidLoginCredentials",dataProviderClass=DataProviders.class)
+	public void verify_InvalidLoginCredentials(String userName,String password)
+	{
+		loginpage=new LoginPage(driver);
+		loginpage.login();
+		System.out.println(userName+" "+password);
 		
+
 	}
 	@Test
 	public void verify_LogoDisplayed()
@@ -47,7 +56,7 @@ public class LoginTest extends Base {
 		loginpage=new LoginPage(driver);
 		String expectedText="7rmart supermarket";
 		String actualText=loginpage.logoText();
-		Assert.assertEquals(actualText, expectedText,"wrong text");
+		Assert.assertEquals(actualText, expectedText,"Logo Not Displayed");
 	}
 	@Test
 	public void verify_CheckBoxIsEnabled()

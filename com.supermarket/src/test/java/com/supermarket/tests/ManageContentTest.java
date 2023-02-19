@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.supermarket.base.Base;
-import com.supermarket.constants.Constants;
 import com.supermarket.pages.LoginPage;
 import com.supermarket.pages.ManageContentPage;
 import com.supermarket.utilities.GeneralUtilities;

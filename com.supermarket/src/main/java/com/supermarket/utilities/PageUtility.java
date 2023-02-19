@@ -112,6 +112,8 @@ public class PageUtility {
 	{
 		String path=Constants.IMAGES_FILE_PATH+fileName+".jfif";
 		element.sendKeys(path);
+		
+		
 	}
 
 }

@@ -18,6 +18,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.supermarket.constants.Constants;
+import com.supermarket.utilities.GeneralUtilities;
 
 
 
@@ -25,7 +26,7 @@ public class ExtentReporter implements IReporter{
 	private ExtentReports extent;
 
 	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-	extent = new ExtentReports(Constants.EXTEND_REPORT_FILE_PATH + File.separator + "Extent.html", true);
+	extent = new ExtentReports(Constants.EXTEND_REPORT_FILE_PATH + File.separator + "Extent_Report_"+GeneralUtilities.getTimeStamp()+".html", true);
 
 	for (ISuite suite : suites) {
 	Map<String, ISuiteResult> result = suite.getResults();

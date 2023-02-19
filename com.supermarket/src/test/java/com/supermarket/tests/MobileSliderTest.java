@@ -13,7 +13,7 @@ public class MobileSliderTest extends Base {
 	LoginPage loginpage;
 	
 	@Test(groups= {"smoke","sanity"})
-	public void verify_NewListAlert()
+	public void verify_NewListCreation()
 	{
 		mobilesliderpage=new MobileSliderPage(driver);
 		loginpage=new LoginPage(driver);

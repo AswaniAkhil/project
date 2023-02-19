@@ -37,7 +37,7 @@ public class ManageUsersPage {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
-	 public String manage_Users()
+	 public String search_Users()
 	 {
 		 generalutilities=new GeneralUtilities(driver);
 		 manageUsers.click();
