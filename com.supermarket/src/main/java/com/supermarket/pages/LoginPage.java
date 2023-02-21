@@ -1,7 +1,6 @@
 package com.supermarket.pages;
 
 import java.io.FileInputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -11,8 +10,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-
 import com.supermarket.constants.Constants;
 import com.supermarket.utilities.GeneralUtilities;
 
@@ -45,11 +42,10 @@ public class LoginPage
 	private WebElement logOut;
 	@FindBy(xpath="//p[@class='login-box-msg']")
 	private WebElement signInAlert;
-	
-	
-	
-	
-	
+	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']")
+	private WebElement invalidAlert;
+	@FindBy(xpath="//span[@class='brand-text font-weight-light']")
+	private WebElement loginLogo;
 	
 	public LoginPage(WebDriver driver)
 	{
@@ -81,11 +77,14 @@ public class LoginPage
 		enterPassword(password);
 		clickOnSignInButton();
 	}
-	 public void login()
+	 public boolean login()
 	 {
+		 generalutilities=new GeneralUtilities(driver);
 		 String username=prop.getProperty("username");
 		 String password=prop.getProperty("password");
 		 login(username,password);
+		return generalutilities.is_Displayed(loginLogo);
+		 
 	 }
 	 public String get_ErrorMessage()
 	 {

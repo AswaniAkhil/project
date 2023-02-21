@@ -17,7 +17,7 @@ public class ManageCategoryTest extends Base {
 		loginpage=new LoginPage(driver);
 		loginpage.login();
 		managecategorypage=new ManageCategoryPage(driver);
-		Assert.assertTrue(managecategorypage.enable_NoButton()," disabled");
+		Assert.assertTrue(managecategorypage.is_NoButtonEnabled()," disabled");
 	}
 	@Test
 	public void verify_NewCategoryCreated()

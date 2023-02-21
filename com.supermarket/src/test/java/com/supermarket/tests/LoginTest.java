@@ -23,14 +23,13 @@ public class LoginTest extends Base {
 		System.out.println(excelread.getCellData(0,0));
 		System.out.println(excelread.getCellData(0,1));
 		loginpage=new LoginPage(driver);
-		loginpage.login();
+		Assert.assertTrue(loginpage.login());
 	}
 	@Test(groups ="smoke" )
 	public void verify_InvalidCredentialsErrorMessage()
 	{
 		loginpage=new LoginPage(driver);
 		loginpage.login("aswani", "admin");
-		//System.out.println(loginpage.get_ErrorMessage());
 		String expectedErrorMessage=Constants.expectedErrorMessage;
 		String actualErrorMessage=loginpage.get_ErrorMessage();
 		Assert.assertEquals(actualErrorMessage, expectedErrorMessage,"error message is not displayed");
@@ -42,7 +41,6 @@ public class LoginTest extends Base {
 		loginpage.login();
 		System.out.println(userName+" "+password);
 		
-
 	}
 	@Test
 	public void verify_LogoDisplayed()

@@ -51,15 +51,9 @@ public class ManageContentPage {
 		newContent.click();
 		title.sendKeys(Title);
 		page.sendKeys(des);
-		
-	pageutility.upload_File(choose, imageName);
-		
+		pageutility.upload_File(choose, imageName);
 		pageutility.scrollAndClick(save);
-		
-		
 		return generalutilities.is_Displayed(alert);
-		
-		
 	}
 	
 

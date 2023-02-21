@@ -37,12 +37,12 @@ public class ManageUsersPage {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
-	 public String search_Users()
+	 public String search_Users(String name)
 	 {
 		 generalutilities=new GeneralUtilities(driver);
 		 manageUsers.click();
 		 searchButtonManageUsers.click();
-		 enterName.sendKeys("tester 003");
+		 enterName.sendKeys(name);
 		 searchListUsers.click();
 		return generalutilities.get_TextOfElement(searchResult) ;
 		 

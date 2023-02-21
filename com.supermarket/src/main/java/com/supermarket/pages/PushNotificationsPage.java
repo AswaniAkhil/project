@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.supermarket.utilities.GeneralUtilities;
-import com.supermarket.utilities.Screenshot;
+import com.supermarket.utilities.WaitUtility;
 
 public class PushNotificationsPage {
 	WebDriver driver;
-	
+	WaitUtility waitutility;
 	GeneralUtilities generalutilities;
 	@FindBy(xpath = "//i[@class='nav-icon fas fa-fas fa-bell']")
 	WebElement pushNotofication;
@@ -22,10 +22,6 @@ public class PushNotificationsPage {
 	WebElement send ;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
 	WebElement alert ;
-	
-	
-	
-	
 	public PushNotificationsPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -35,16 +31,15 @@ public class PushNotificationsPage {
 	{
 		
 		pushNotofication.click();
-		
-		
-		
 	}
 	public boolean send_Information(String tit,String des)
 	{
 		generalutilities=new GeneralUtilities(driver);
+		waitutility=new WaitUtility(driver);
 		title.sendKeys(tit);
 		description.sendKeys(des);
 		send.click();
+		waitutility.wait_ForElementToBeVisible("//div[@class='alert alert-success alert-dismissible']");
 		return generalutilities.is_Displayed(alert);
 	}
 	

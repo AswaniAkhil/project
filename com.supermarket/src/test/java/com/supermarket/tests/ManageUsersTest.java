@@ -18,7 +18,7 @@ public class ManageUsersTest extends Base {
 		loginpage=new LoginPage(driver);
 		loginpage.login();
 		String expectedText="tester 003";
-		String actualText=manageuserspage.search_Users();
+		String actualText=manageuserspage.search_Users("tester 003");
 		Assert.assertEquals(actualText, expectedText,"Invalid text");
 		
 	}

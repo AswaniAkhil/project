@@ -1,5 +1,6 @@
 package com.supermarket.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.supermarket.base.Base;
@@ -21,7 +22,7 @@ public class ManagePaymentMethodsTest extends Base {
 			excelread.setExcelFile("Payment","Debit Card");
 			String title=excelread.getCellData(0,0);
 			String payment=excelread.getCellData(0,1);
-			managepaymentmethodspage.update_PaymentMethodInformation(title,payment);
+			Assert.assertTrue(managepaymentmethodspage.update_PaymentMethodInformation(title, payment));;
 		}
 
 }

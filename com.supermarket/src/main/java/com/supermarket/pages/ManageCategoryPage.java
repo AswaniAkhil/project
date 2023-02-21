@@ -36,18 +36,14 @@ public class ManageCategoryPage {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
-	public boolean enable_NoButton()
+	public boolean is_NoButtonEnabled()
 	{
 		manageCategory.click();
 		generalutilities=new GeneralUtilities(driver);
-		
-	
 		categoryMoreInfo.click();
-		
 		newButton.click();
 		topMenuNoButton.click();
 		return generalutilities.is_Enabled(topMenuNoButton);
-		
 	}
 	public boolean create_NewCategory(String category,String imageName)
 	{
@@ -60,8 +56,6 @@ public class ManageCategoryPage {
 		pageutility.upload_File(chooseFile,imageName);
 		pageutility.scrollAndClick(save);
 		return generalutilities.is_Displayed(newCategoryAlert);
-		
-		
 	}
 	
 

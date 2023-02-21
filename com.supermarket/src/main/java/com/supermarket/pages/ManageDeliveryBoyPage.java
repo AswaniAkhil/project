@@ -38,13 +38,6 @@ public class ManageDeliveryBoyPage {
 	WebElement save;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	WebElement alert ;
-	
-	
-	
-	
-	
-	
-	
 	public ManageDeliveryBoyPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -81,10 +74,6 @@ public class ManageDeliveryBoyPage {
 		waitutility.wait_ForElementToBeVisible("//div[@class='alert alert-success alert-dismissible']");
 		
 		return generalutilities.is_Displayed(alert);
-		
-		
-		
-		
 	}
 	
 	

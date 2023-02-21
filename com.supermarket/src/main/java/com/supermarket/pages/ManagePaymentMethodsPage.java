@@ -10,11 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.supermarket.utilities.GeneralUtilities;
 import com.supermarket.utilities.PageUtility;
+import com.supermarket.utilities.WaitUtility;
 
 public class ManagePaymentMethodsPage {
 	WebDriver driver;
 	PageUtility pageutility;
 	GeneralUtilities generalutilities;
+	WaitUtility waitutility;
 	Properties prop = new Properties();
 	FileInputStream ip;
 	@FindBy(xpath="//i[@class='nav-icon fas fa-credit-card']")
@@ -25,6 +27,10 @@ public class ManagePaymentMethodsPage {
 	private WebElement title;
 	@FindBy(xpath="//input[@id='limit']")
 	private WebElement paymentLimit;
+	@FindBy(xpath="//button[@name='Update']")
+	private WebElement updateButton;
+	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
+	private WebElement updateAlert;
 	
 	public ManagePaymentMethodsPage(WebDriver driver)
 	{
@@ -32,18 +38,18 @@ public class ManagePaymentMethodsPage {
 		PageFactory.initElements(driver,this);
 		
 	}
-	public void update_PaymentMethodInformation(String cardTitle,String limit)
+	public boolean update_PaymentMethodInformation(String cardTitle,String limit)
 	{
+		generalutilities=new GeneralUtilities(driver);
 		pageutility=new PageUtility(driver);
+		waitutility=new WaitUtility(driver);
 		pageutility.scrollAndClick(managePaymentMethod);
 		editButton.click();
 		title.sendKeys(cardTitle);
 		paymentLimit.sendKeys(limit);
-		
-		
-		
-		
-		
+		updateButton.click();
+		waitutility.wait_ForElementToBeVisible("//div[@class='alert alert-success alert-dismissible']");
+		return generalutilities.is_Displayed(updateAlert);
 	}
 
 }
