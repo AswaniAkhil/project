@@ -53,7 +53,8 @@ public class AdminUsersPage {
 	WebElement searchButton;
 	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr[1]//td[1]")
 	WebElement searchResult;
-
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]")
+	List<WebElement> adminUsersElements;
 	public AdminUsersPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -67,7 +68,8 @@ public class AdminUsersPage {
 
 		List<String> adminUsers = new ArrayList<String>();
 
-		adminUsers = generalutilities.get_TextOfElements("//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]");
+		//adminUsers = generalutilities.get_TextOfElements("//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]");
+		adminUsers=generalutilities.get_TextOfElements(adminUsersElements);
 		for (i = 0; i < adminUsers.size(); i++) {
 			if (name.equals(adminUsers.get(i))) {
 				i++;
@@ -83,7 +85,7 @@ public class AdminUsersPage {
 		select.selectByIndex(3);
 		updateButton.click();
 		waitutility = new WaitUtility(driver);
-		waitutility.wait_ForElementToBeVisible("//div[@class='alert alert-success alert-dismissible']");
+		waitutility.wait_ForElementToBeVisible(alert);
 		return generalutilities.is_Displayed(alert);
 
 	}
