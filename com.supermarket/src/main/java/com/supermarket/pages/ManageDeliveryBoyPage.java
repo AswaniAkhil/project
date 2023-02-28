@@ -20,7 +20,7 @@ public class ManageDeliveryBoyPage {
 	@FindBy(xpath="//i[@class='nav-icon fas fa-user-plus']")
 	WebElement manageDeliveryBoy;
 	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]")
-	WebElement deliveryBoyNames ;
+	List<WebElement> deliveryBoyNames ;
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']")
 	WebElement newButton;
 	@FindBy(xpath="//input[@id='name']")
@@ -38,6 +38,18 @@ public class ManageDeliveryBoyPage {
 	WebElement save;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	WebElement alert ;
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[8]//a[2]")
+	List<WebElement> deleteButton;
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr[\"+i+\"]//td[8]//a[2]")
+	WebElement deleteAUser;
+	@FindBy(xpath="//a[@class='btn btn-rounded btn-primary']")
+	WebElement searchButton;
+	@FindBy(xpath="//input[@id='un']")
+	WebElement nameField;
+	@FindBy(xpath="//button[@class='btn btn-block-sm btn-danger']")
+	WebElement downSearchButton;
+	@FindBy(xpath="//span[@id='res']")
+	WebElement resultMsg;
 	public ManageDeliveryBoyPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -51,8 +63,8 @@ public class ManageDeliveryBoyPage {
 		waitutility=new WaitUtility(driver);
 		pageutility.scrollAndClick(manageDeliveryBoy);
 		List<String> names = new ArrayList<String>();
-		waitutility.wait_ForElementToBeVisible("//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]");
-		 names=generalutilities.get_TextOfElements("//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]");
+		
+		 names=generalutilities.get_TextOfElements(deliveryBoyNames);
 		System.out.println(names);
 			return names.size();
 		
@@ -71,10 +83,40 @@ public class ManageDeliveryBoyPage {
 		password.sendKeys(pass);
 		pageutility.scrollAndClick(save);
 		
-		waitutility.wait_ForElementToBeVisible("//div[@class='alert alert-success alert-dismissible']");
+		waitutility.wait_ForElementToBeVisible(alert);
 		
 		return generalutilities.is_Displayed(alert);
 	}
+	public boolean delete_ADeliveryBoyAndSearch(String name)
+	{
+		generalutilities=new GeneralUtilities(driver);
+		pageutility=new PageUtility(driver);
+		waitutility=new WaitUtility(driver);
+		pageutility.scrollAndClick(manageDeliveryBoy);
+		int i=0;
+		List<String> deliveryBoyNames=new ArrayList<String>();
+		
+		deliveryBoyNames=generalutilities.get_TextOfElements(deleteButton);
+		 for(i=0;i<deliveryBoyNames.size();i++)
+		 {
+			 if(name.equals(deliveryBoyNames.get(i)))
+			 {
+				 i++;
+				 break;
+			 }
+		 }
+		 pageutility.scrollAndClick(deleteAUser);
+		 
+		 pageutility.accept_Alert();
+		 
+		 searchButton.click();
+			nameField.sendKeys(name);
+			waitutility.wait_ForElementToBeClickable(downSearchButton);
+			downSearchButton.click();
+			waitutility.wait_ForElementToBeVisible(resultMsg);
+			return generalutilities.is_Displayed(resultMsg);
+		 
+		 }
 	
 	
 

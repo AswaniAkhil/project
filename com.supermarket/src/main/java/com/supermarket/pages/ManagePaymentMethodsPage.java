@@ -48,7 +48,7 @@ public class ManagePaymentMethodsPage {
 		title.sendKeys(cardTitle);
 		paymentLimit.sendKeys(limit);
 		updateButton.click();
-		waitutility.wait_ForElementToBeVisible("//div[@class='alert alert-success alert-dismissible']");
+		waitutility.wait_ForElementToBeVisible(updateAlert);
 		return generalutilities.is_Displayed(updateAlert);
 	}
 

@@ -24,7 +24,7 @@ public class ManageDeliveryBoyTest extends Base {
 		Assert.assertEquals(actualValue, expectedValue);
 	}
 	@Test
-	public void verify_AlertDisplayed() 
+	public void verify_CreatedNewBoyAlertDisplayed() 
 	{
 		loginpage = new LoginPage(driver);
 		 managedeliveryboypage=new ManageDeliveryBoyPage(driver);
@@ -37,10 +37,15 @@ public class ManageDeliveryBoyTest extends Base {
 		String userName=excelread.getCellData(0,3)+GeneralUtilities.getTimeStamp();
 		String password=excelread.getCellData(0,4);
 		Assert.assertTrue(managedeliveryboypage.create_NewDeliveryBoy(name, email, phone, userName, password));
+	}
+	@Test
+	public void verify_DeliveryBoyDeletedSuccessfully()
+	{
+		loginpage = new LoginPage(driver);
+		 managedeliveryboypage=new ManageDeliveryBoyPage(driver);
+		loginpage.login();
 		
-		
-		
-		
+		Assert.assertTrue(managedeliveryboypage.delete_ADeliveryBoyAndSearch("rejith34 brianne.heathcote"));
 	}
 	
 

@@ -5,7 +5,6 @@ package com.supermarket.pages;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,7 +29,10 @@ public class ManageUsersPage {
 	private WebElement searchResult;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	private WebElement deactiveAlert;
-	
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']/tbody/tr[\"+i+\"]/td[5]/a")
+	private WebElement statusChangeButton;
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]")
+	private List<WebElement> listUsersNames;
 	
 	public ManageUsersPage(WebDriver driver)
 	{
@@ -62,7 +64,7 @@ public class ManageUsersPage {
 		 manageUsers.click(); 
 		 List<String>loggedUsersNames=new ArrayList<String>();
 		 
-		 loggedUsersNames=generalutilities.get_TextOfElements("//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]");
+		 loggedUsersNames=generalutilities.get_TextOfElements(listUsersNames);
 		 for(i=0;i<loggedUsersNames.size();i++)
 		 {
 			 if(usersName.equals(loggedUsersNames.get(i)))
@@ -71,7 +73,7 @@ public class ManageUsersPage {
 				 break;
 			 }
 		 }
-		 WebElement statusChangeButton=driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']/tbody/tr["+i+"]/td[5]/a"));
+		// WebElement statusChangeButton=driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']/tbody/tr["+i+"]/td[5]/a"));
 		 pageutility.scrollAndClick(statusChangeButton);
 		 
 		 

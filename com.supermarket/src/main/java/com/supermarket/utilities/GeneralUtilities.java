@@ -51,6 +51,17 @@ public class GeneralUtilities {
 	}
 	return textData;
 	}
+	public List<String> get_TextOfElements(List<WebElement> elements)
+	{
+		List<String>textData=new ArrayList<String>();
+		
+		for(WebElement element:elements)
+		{
+			textData.add(element.getText());
+		}
+		return textData;
+		
+	}
 	public static String getTimeStamp()
 	{ 
 		//for avoid duplication

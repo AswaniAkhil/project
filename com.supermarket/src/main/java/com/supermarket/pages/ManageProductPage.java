@@ -22,7 +22,8 @@ public class ManageProductPage {
 	private WebElement productImage;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
 	private WebElement productDeletedAlert;
-	
+	@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]")
+	private List<WebElement> listOfProduct;
 	public ManageProductPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -49,7 +50,7 @@ public class ManageProductPage {
 		 int i=0;
 		 List<String>listOfProducts=new ArrayList<String>();
 		 
-		 listOfProducts =generalutilities.get_TextOfElements("//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]");
+		 listOfProducts =generalutilities.get_TextOfElements(listOfProduct);
 		 for(i=0;i<listOfProducts.size();i++)
 		 {
 			 if(usersName.equals(listOfProducts.get(i)))

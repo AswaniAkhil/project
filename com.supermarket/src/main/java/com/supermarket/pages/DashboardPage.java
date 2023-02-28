@@ -19,6 +19,8 @@ public class DashboardPage {
 	GeneralUtilities generalutilities;
 	@FindBy(xpath="(//div[@class='container-fluid'])[2]")
 	WebElement elements;
+	@FindBy(xpath="(//div[@class='container-fluid'])[2]//p")
+	List<WebElement> elementTexts;
 	
 	 public DashboardPage(WebDriver driver) 
 	
@@ -31,8 +33,8 @@ public class DashboardPage {
 		 waitutility=new WaitUtility(driver);
 		 generalutilities = new GeneralUtilities(driver);
 		 List<String> elementText = new ArrayList<String>();
-		 waitutility.wait_ForElementToBeVisible("(//div[@class='container-fluid'])[2]//p");
-		 elementText = generalutilities.get_TextOfElements("(//div[@class='container-fluid'])[2]//p");
+		 
+		 elementText = generalutilities.get_TextOfElements(elementTexts);
 		System.out.println(elementText);
 		return elementText;
 	 }

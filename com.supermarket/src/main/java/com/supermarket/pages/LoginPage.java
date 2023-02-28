@@ -46,6 +46,8 @@ public class LoginPage
 	private WebElement invalidAlert;
 	@FindBy(xpath="//span[@class='brand-text font-weight-light']")
 	private WebElement loginLogo;
+	@FindBy(xpath="//div[@class='inner']//p")
+	private List<WebElement> dashBoardElements;
 	
 	public LoginPage(WebDriver driver)
 	{
@@ -125,7 +127,8 @@ public class LoginPage
 	 {
 		 generalutilities=new GeneralUtilities(driver);
 		 
-		return generalutilities.get_TextOfElements("//div[@class='inner']//p");
+		return generalutilities.get_TextOfElements(dashBoardElements);
+		 
 		
 		 
 	 }
