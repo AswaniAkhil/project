@@ -20,7 +20,7 @@ public class AdminUsersTest extends Base {
 		loginpage = new LoginPage(driver);
 		loginpage.login();
 		adminuserspage = new AdminUsersPage(driver);
-		Assert.assertTrue(adminuserspage.update_UserDetails("aswani15_02_2023_10_19_00", userName, "ash"));
+		Assert.assertTrue(adminuserspage.update_UserDetails("aswani21_02_2023_07_54_32", userName, "ash"));
 	}
 
 	@Test(dataProvider="usersCredentials",dataProviderClass=DataProviders.class)
