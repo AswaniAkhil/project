@@ -17,9 +17,9 @@ public class ManageUsersTest extends Base {
 		manageuserspage=new ManageUsersPage(driver);
 		loginpage=new LoginPage(driver);
 		loginpage.login();
-		String expectedText="tester 003";
-		String actualText=manageuserspage.search_Users("tester 003");
-		Assert.assertEquals(actualText, expectedText,"Invalid text");
+		String expectedText="Sadfg Ddf";
+		String actualText=manageuserspage.search_Users("Sadfg Ddf");
+		Assert.assertEquals(actualText, expectedText,"Result Not Found");
 		
 	}
 	@Test
@@ -29,7 +29,7 @@ public class ManageUsersTest extends Base {
 		loginpage=new LoginPage(driver);
 		loginpage.login();
 		manageuserspage.clickOnManageUsers();
-		manageuserspage.deactivate_User("Sadfg Ddf");
+		manageuserspage.deactivate_User("Neena Neena");
 		Assert.assertTrue(manageuserspage.alert_IsDisplayed());
 		
 	}

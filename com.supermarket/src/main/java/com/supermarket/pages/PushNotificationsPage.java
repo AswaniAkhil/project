@@ -39,7 +39,7 @@ public class PushNotificationsPage {
 		title.sendKeys(tit);
 		description.sendKeys(des);
 		send.click();
-		waitutility.wait_ForElementToBeVisible("//div[@class='alert alert-success alert-dismissible']");
+		waitutility.wait_ForElementToBeVisible(alert);
 		return generalutilities.is_Displayed(alert);
 	}
 	

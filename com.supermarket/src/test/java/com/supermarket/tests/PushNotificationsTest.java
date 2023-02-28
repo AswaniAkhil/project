@@ -15,7 +15,7 @@ public class PushNotificationsTest extends Base {
 	LoginPage loginpage;
 	ExcelRead excelread;
 	@Test
-	public void verify_PushNotificationAlert()
+	public void verify_NotificationSuccessfulAlert()
 	{
 		excelread=new ExcelRead();
 		loginpage=new LoginPage(driver);
