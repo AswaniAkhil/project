@@ -73,7 +73,7 @@ public class ManageUsersPage {
 				 break;
 			 }
 		 }
-		// WebElement statusChangeButton=driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']/tbody/tr["+i+"]/td[5]/a"));
+		
 		 pageutility.scrollAndClick(statusChangeButton);
 		 
 		 

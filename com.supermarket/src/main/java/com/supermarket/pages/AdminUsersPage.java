@@ -68,7 +68,7 @@ public class AdminUsersPage {
 
 		List<String> adminUsers = new ArrayList<String>();
 
-		//adminUsers = generalutilities.get_TextOfElements("//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]");
+		
 		adminUsers=generalutilities.get_TextOfElements(adminUsersElements);
 		for (i = 0; i < adminUsers.size(); i++) {
 			if (name.equals(adminUsers.get(i))) {
