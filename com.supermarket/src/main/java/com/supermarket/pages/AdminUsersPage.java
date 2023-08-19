@@ -64,7 +64,7 @@ public class AdminUsersPage {
 		int i;
 		adminUsersMoreInfo.click();
 		generalutilities = new GeneralUtilities(driver);
-		pageutility = new PageUtility(driver);
+		pageutility    = new PageUtility(driver);
 
 		List<String> adminUsers = new ArrayList<String>();
 
